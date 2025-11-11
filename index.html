@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚀 Deployed from Google Apps Script</title>
-  <link rel="stylesheet" href="/assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>✨ Inspiration Generator</title>
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
   <main>
-    <h1>Hello from <span class="highlight">Vercel</span> 👋</h1>
-    <p>This static page was deployed automatically via Google Apps Script → GitHub → Vercel.</p>
-    <a href="/api/hello">See API endpoint</a>
+    <h1>✨ Inspiration Generator</h1>
+    <p id="quote">Click below to get inspired!</p>
+    <button onclick="getQuote()">🎯 New Quote</button>
   </main>
+  <script>
+    async function getQuote() {
+      const res = await fetch('/api/quote');
+      const data = await res.json();
+      document.getElementById('quote').innerText = data.quote;
+    }
+  </script>
 </body>
 </html>
