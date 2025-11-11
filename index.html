@@ -2,22 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>✨ Inspiration Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨ AI Inspiration Generator</title>
   <link rel="stylesheet" href="/assets/style.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    main {
+      background: white;
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    #quote {
+      font-size: 18px;
+      line-height: 1.5;
+      min-height: 60px;
+      color: #333;
+    }
+    button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0059c1;
+    }
+  </style>
 </head>
 <body>
   <main>
-    <h1>✨ Inspiration Generator</h1>
+    <h1>✨ AI Inspiration Generator</h1>
     <p id="quote">Click below to get inspired!</p>
-    <button onclick="getQuote()">🎯 New Quote</button>
+    <button id="btn">💭 New Quote</button>
   </main>
+
   <script>
     async function getQuote() {
-      const res = await fetch('/api/quote');
-      const data = await res.json();
-      document.getElementById('quote').innerText = data.quote;
+      const btn = document.getElementById('btn');
+      const quoteBox = document.getElementById('quote');
+      btn.disabled = true;
+      btn.textContent = '⏳ Thinking...';
+      quoteBox.textContent = '...';
+
+      try {
+        const res = await fetch('/api/quote');
+        const data = await res.json();
+        quoteBox.textContent = data.quote || '✨ Something went wrong, try again!';
+      } catch (err) {
+        quoteBox.textContent = '⚠️ Error fetching quote';
+      }
+
+      btn.textContent = '💭 New Quote';
+      btn.disabled = false;
     }
+
+    document.getElementById('btn').addEventListener('click', getQuote);
   </script>
 </body>
 </html>
