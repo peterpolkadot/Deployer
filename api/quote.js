@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: "gpt-4o-mini",
         messages: [
-          { role: "system", content: "You generate short, inspiring original quotes." },
+          { role: "system", content: "You generate short, inspiring quotes." },
           { role: "user", content: "Give me one uplifting original quote." }
         ],
         max_tokens: 40
