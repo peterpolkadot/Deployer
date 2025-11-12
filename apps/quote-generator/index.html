@@ -10,13 +10,32 @@
   <main>
     <h1>Quote Generator</h1>
     <p id="quote">Click below to get inspired!</p>
-    <button onclick="getQuote()">💭 New Quote</button>
+    <button onclick="getQuote()" id="quoteBtn">💭 New Quote</button>
+    <p id="error" class="error"></p>
   </main>
   <script>
     async function getQuote() {
-      const res = await fetch('/api/quote'); // ✅ call backend route
-      const data = await res.json();
-      document.getElementById('quote').innerText = data.quote || '✨ Error fetching quote!';
+      const btn = document.getElementById('quoteBtn');
+      const quoteEl = document.getElementById('quote');
+      const errorEl = document.getElementById('error');
+      
+      btn.disabled = true;
+      btn.textContent = '⏳ Loading...';
+      errorEl.textContent = '';
+      
+      try {
+        const res = await fetch('/api/quote');
+        if (!res.ok) throw new Error('Failed to fetch quote');
+        
+        const data = await res.json();
+        quoteEl.innerText = data.quote || '✨ Keep going — you're doing great!';
+      } catch (err) {
+        errorEl.textContent = '❌ ' + err.message;
+        quoteEl.innerText = 'Click below to get inspired!';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '💭 New Quote';
+      }
     }
   </script>
 </body>

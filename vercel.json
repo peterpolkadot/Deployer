@@ -1,13 +1,4 @@
 {
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Powered-By",
-          "value": "Apps Script Deployer"
-        }
-      ]
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
