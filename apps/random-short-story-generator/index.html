@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Short Story Generator</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Random Short Story Generator</h1>
+        <button id="generate">Generate Story</button>
+        <div id="story" class="story"></div>
+    </div>
+    <script>
+        document.getElementById('generate').onclick = async function() {
+            const response = await fetch('/api/generate-story');
+            const data = await response.json();
+            document.getElementById('story').innerText = data.result;
+        };
+    </script>
+</body>
+<!-- Deployed: 2025-11-12T03:47:35.585Z -->
+</html>
