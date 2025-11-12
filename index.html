@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✨ AI Inspiration Generator</title>
-  <link rel="stylesheet" href="/assets/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 My Deployed Apps</title>
+  <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
   <main>
-    <h1>✨ AI Inspiration Generator</h1>
-    <p id="quote">Click below to get inspired!</p>
-    <button id="btn">💭 New Quote</button>
+    <h1>🚀 My Deployed Apps</h1>
+    <ul>
+      <li><a href="peterpolkadot@gmail.com/apps/1df3ece3c52a9d8439247586621ae96c020f705b/" target="_blank">1df3ece3c52a9d8439247586621ae96c020f705b</a> – </li>
+<li><a href="https://deployer-nkwurkd5j-peterpolkadots-projects.vercel.app/apps/inspire-ai/" target="_blank">inspire-ai</a> – A simple static app called inspire-ai.</li>
+
+    </ul>
   </main>
-
-  <script>
-    async function getQuote() {
-      const btn = document.getElementById('btn');
-      const quoteBox = document.getElementById('quote');
-      btn.disabled = true;
-      btn.textContent = '⏳ Thinking...';
-      quoteBox.textContent = '...';
-
-      try {
-        const res = await fetch('/api/quote');
-        const data = await res.json();
-        quoteBox.textContent = data.quote || '✨ Something went wrong!';
-      } catch (err) {
-        quoteBox.textContent = '⚠️ Error fetching quote';
-      }
-
-      btn.textContent = '💭 New Quote';
-      btn.disabled = false;
-    }
-
-    document.getElementById('btn').addEventListener('click', getQuote);
-  </script>
 </body>
 </html>
