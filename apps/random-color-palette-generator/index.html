@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Palette Generator</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <!-- Deployed: 2025-11-12T03:21:05.041Z -->
+    <div class="main">
+        <h1>Random Color Palette Generator</h1>
+        <div id="palette" style="display: flex; justify-content: center; margin-bottom: 20px;"></div>
+        <button id="generate">Generate Palette</button>
+    </div>
+    <script>
+        function generatePalette() {
+            const paletteDiv = document.getElementById('palette');
+            paletteDiv.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+                const colorBox = document.createElement('div');
+                colorBox.style.backgroundColor = color;
+                colorBox.style.width = '100px';
+                colorBox.style.height = '100px';
+                colorBox.style.margin = '0 10px';
+                paletteDiv.appendChild(colorBox);
+            }
+        }
+        document.getElementById('generate').addEventListener('click', generatePalette);
+        generatePalette(); // Generate initial palette on load
+    </script>
+</body>
+</html>
