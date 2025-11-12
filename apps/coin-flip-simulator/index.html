@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip Simulator</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Coin Flip Simulator</h1>
+        <button id="flipButton">Flip Coin</button>
+        <h2 id="result"></h2>
+    </div>
+    <script>
+        document.getElementById('flipButton').addEventListener('click', function() {
+            const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
+            document.getElementById('result').innerText = result;
+        });
+    </script>
+</body>
+<!-- Deployed: 2023-10-10T12:00:00Z -->
+</html>
