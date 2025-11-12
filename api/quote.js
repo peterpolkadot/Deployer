@@ -22,11 +22,14 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
+      const errorText = await response.text();
+      throw new Error("OpenAI API error: " + response.status + " - " + errorText);
     }
 
     const data = await response.json();
-    const quote = data.choices?.[0]?.message?.content?.trim() || "Keep going — you're doing great!";
+    const quote = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content 
+      ? data.choices[0].message.content.trim() 
+      : "Keep going — you are doing great!";
     
     res.status(200).json({ quote });
   } catch (err) {
