@@ -5,7 +5,7 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + process.env.OPENAI_KEY
+        "Authorization": "Bearer " + process.env.OPENAI_KEY"
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
@@ -19,14 +19,6 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     const quote = data.choices?.[0]?.message?.content?.trim() || "Keep going — you're doing great!";
-
-    // Log to Google Sheet
-    await fetch(process.env.LOGGER_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ quote, timestamp: new Date().toISOString() })
-    });
-
     res.status(200).json({ quote });
   } catch (err) {
     res.status(500).json({ error: err.message });

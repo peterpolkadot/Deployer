@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Quote Generator</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <main>
+    <h1>Quote Generator</h1>
+    <p id="quote">Click below to get inspired!</p>
+    <button onclick="getQuote()">💭 New Quote</button>
+  </main>
+  <script>
+    async function getQuote() {
+      const res = await fetch('/api/quote'); // ✅ call backend route
+      const data = await res.json();
+      document.getElementById('quote').innerText = data.quote || '✨ Error fetching quote!';
+    }
+  </script>
+</body>
+</html>
