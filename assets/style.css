@@ -1,7 +1,7 @@
 
 body {
   font-family: system-ui, sans-serif;
-  background: #f7f7f7;
+  background: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,10 +13,4 @@ main {
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
-}
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
 }
