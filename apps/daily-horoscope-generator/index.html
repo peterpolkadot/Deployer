@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Daily Horoscope Generator</title>
+</head>
+<body>
+    <div class="card">
+        <h1>Daily Horoscope</h1>
+        <select id="zodiac-sign">
+            <option value="Aries">Aries</option>
+            <option value="Taurus">Taurus</option>
+            <option value="Gemini">Gemini</option>
+            <option value="Cancer">Cancer</option>
+            <option value="Leo">Leo</option>
+            <option value="Virgo">Virgo</option>
+            <option value="Libra">Libra</option>
+            <option value="Scorpio">Scorpio</option>
+            <option value="Sagittarius">Sagittarius</option>
+            <option value="Capricorn">Capricorn</option>
+            <option value="Aquarius">Aquarius</option>
+            <option value="Pisces">Pisces</option>
+        </select>
+        <button id="generate-btn">Get Horoscope</button>
+        <p id="horoscope-result"></p>
+    </div>
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', async () => {
+            const sign = document.getElementById('zodiac-sign').value;
+            const response = await fetch('/api/generate-horoscope', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ sign })
+            });
+            const data = await response.json();
+            document.getElementById('horoscope-result').innerText = data.result;
+        });
+    </script>
+</body>
+<!-- Deployed: 2025-11-12T03:46:04.370Z -->
+</html>
