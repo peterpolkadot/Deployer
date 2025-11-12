@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Motivational Quote Generator</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; transition: background-color 0.5s; }
+        #quote { font-size: 24px; text-align: center; }
+    </style>
+</head>
+<body>
+    <!-- Deployed: 2023-10-07T12:00:00Z -->
+    <div class="card">
+        <div id="quote">Click the button for a motivational quote!</div>
+        <button id="new-quote-button">New Quote</button>
+    </div>
+    <script>
+        const quotes = [
+            "Believe you can and you're halfway there.",
+            "You are never too old to set another goal or to dream a new dream.",
+            "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+            "The only way to do great work is to love what you do."
+        ];
+        const button = document.getElementById('new-quote-button');
+        const quoteDiv = document.getElementById('quote');
+        button.addEventListener('click', () => {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            quoteDiv.innerText = randomQuote;
+            document.body.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        });
+    </script>
+</body>
+</html>
