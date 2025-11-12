@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Tarot Card Reading Generator</title>
+</head>
+<body>
+    <div class="card">
+        <h1>Tarot Card Reading Generator</h1>
+        <button id="generate">Generate Reading</button>
+        <div id="reading"></div>
+    </div>
+    <script>
+        const tarotCards = [
+            { name: "The Fool", interpretation: "New beginnings, adventures, and opportunities." },
+            { name: "The Magician", interpretation: "Manifestation, resourcefulness, and power." },
+            { name: "The High Priestess", interpretation: "Intuition, unconscious knowledge, and mystery." },
+            { name: "The Empress", interpretation: "Fertility, femininity, beauty, and nature." },
+            { name: "The Emperor", interpretation: "Authority, structure, control, and fatherhood." },
+            // Add more tarot cards as needed
+        ];
+
+        document.getElementById('generate').addEventListener('click', () => {
+            const randomCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
+            document.getElementById('reading').innerHTML = `<h2>${randomCard.name}</h2><p>${randomCard.interpretation}</p>`;
+        });
+    </script>
+    <!-- Deployed: 2025-11-12T03:28:38.366Z -->
+</body>
+</html>
