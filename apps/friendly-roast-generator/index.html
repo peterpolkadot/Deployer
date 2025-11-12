@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendly Roast Generator</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Friendly Roast Generator</h1>
+        <button id="generate-roast">Generate Roast</button>
+        <p id="roast"></p>
+    </div>
+    <script>
+        document.getElementById('generate-roast').addEventListener('click', async () => {
+            const response = await fetch('/api/friendly-roast-generator');
+            const data = await response.json();
+            document.getElementById('roast').innerText = data.result;
+        });
+    </script>
+</body>
+<!-- Deployed: 2025-11-12T04:00:54.110Z -->
+</html>
